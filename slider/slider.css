@@ -34,7 +34,7 @@
     opacity: 0;
     align-items: center;
     align-content: center;
-    transition: all .3s;
+    transition: all .2s;
 }
 
 .modal.is-visible {
@@ -49,9 +49,9 @@
     padding: 1.5em 2em;
     border-radius: 5px;
     position: relative;
-    transform: translateY(20px);
+    transform: translateY(50px);
     opacity: 0;
-    transition: all .3s .5s ease-in;
+    transition: all .3s .3s ease-in;
 }
 
 .modal.is-visible .modal-area {
