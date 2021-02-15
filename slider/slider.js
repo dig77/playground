@@ -7,6 +7,10 @@ const formArea = document.querySelector('form');
 const showQuery = document.querySelector('#myQuery');
 const imagesItem = document.querySelectorAll('.slider-item');
 const slider = document.querySelector('.is-slider');
+const nextButton = document.querySelector('#next-button');
+const prevButton = document.querySelector('#previous-button');
+let currentImgIndex = 0;
+const totalSlides = imagesItem.length;
 let query;
 
 
@@ -14,6 +18,8 @@ let query;
 searchButton.addEventListener('click',openModal);
 closeModalButton.addEventListener('click', closeModal);
 formArea.addEventListener('submit', getQuery);
+nextButton.addEventListener('click', moveNextImg);
+prevButton.addEventListener('click', movePrevImg);
 
 // functions
 function openModal() {
@@ -32,17 +38,51 @@ function getImage() {
         `
         imagesItem[i].insertAdjacentHTML('afterbegin', image)
     }
-
-    
 }
 
 function getQuery(e) {
     e.preventDefault();
     query = inputBox.value;
+    checkImg();
     slider.classList.add('visible');
     getImage();
-    console.log(query);
     modal.classList.remove('is-visible');
     inputBox.value = '';
+   
+}
+
+function hideAllImg() {
+   for (const image of imagesItem) {
+       image.classList.remove('visible')
+       image.classList.add('hidden')
+   }
+}
+
+function moveNextImg() {
+    hideAllImg();
+    if(currentImgIndex === totalSlides -1) {
+        currentImgIndex = 0
+    } else {
+        currentImgIndex ++;   
+    }
+    imagesItem[currentImgIndex].classList.add('visible');
+}
+
+function movePrevImg() {
+    hideAllImg();
+    if(currentImgIndex === 0) {
+        currentImgIndex = totalSlides - 1;
+    }
+    else {
+        currentImgIndex--;
+    }
+    imagesItem[currentImgIndex].classList.add('visible');
+}
+
+function checkImg() {
+    const images = document.querySelectorAll('img');
+    images.forEach(el => {
+        el.remove();
+    })
 }
 

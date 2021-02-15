@@ -159,6 +159,10 @@ form {
     display: none;
 }
 
-.slider-item.visible {
+.hidden {
+    display: none;
+}
+
+.visible {
     display: block;
 }
