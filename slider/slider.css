@@ -193,8 +193,8 @@ form {
 }
 
 .ball {
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
     border-radius: 100%;
     background-color: rgb(208,208,208);
     margin: .7em;
@@ -202,7 +202,7 @@ form {
 }
 
 .ball.is-current {
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
     background-color: hsl(var(--brandHSL));
 }
