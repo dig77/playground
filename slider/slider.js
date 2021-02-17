@@ -12,6 +12,7 @@ const prevButton = document.querySelector('#previous-button');
 let currentImgIndex = 0;
 const totalSlides = imagesItem.length;
 let query;
+const indicators = document.querySelectorAll('.ball');
 
 
 // event listeners
@@ -48,28 +49,36 @@ function getQuery(e) {
     getImage();
     modal.classList.remove('is-visible');
     inputBox.value = '';
-   
 }
 
 function hideAllImg() {
    for (const image of imagesItem) {
-       image.classList.remove('visible')
-       image.classList.add('hidden')
+       image.classList.remove('visible');
+       image.classList.add('hidden');
    }
+}
+
+function hideIndicators() {
+    for( const ball of indicators) {
+        ball.classList.remove('is-current');
+    }
 }
 
 function moveNextImg() {
     hideAllImg();
+    hideIndicators();
     if(currentImgIndex === totalSlides -1) {
         currentImgIndex = 0
     } else {
         currentImgIndex ++;   
     }
     imagesItem[currentImgIndex].classList.add('visible');
+    indicators[currentImgIndex].classList.add('is-current');
 }
 
 function movePrevImg() {
     hideAllImg();
+    hideIndicators();
     if(currentImgIndex === 0) {
         currentImgIndex = totalSlides - 1;
     }
@@ -77,6 +86,7 @@ function movePrevImg() {
         currentImgIndex--;
     }
     imagesItem[currentImgIndex].classList.add('visible');
+    indicators[currentImgIndex].classList.add('is-current');
 }
 
 function checkImg() {
